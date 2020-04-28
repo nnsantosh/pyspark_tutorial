@@ -236,6 +236,27 @@ df.select(countDistinct('Sales')).show() <br/>
 |                   11| <br/>
 +---------------------+ <br/>
 
+You can also specify alias names for the output column: <br/>
+
+df.select(avg('Sales').alias('Average Sales')).show() <br/>
+
+We can also format number as shown: <br/>
+std_dev = df.select(stddev('Sales')) <br/>
+Output will be: <br/>
++------------------+ <br/>
+|stddev_samp(Sales)| <br/>
++------------------+ <br/>
+|250.08742410799007| <br/>
++------------------+ <br/>
+from pyspark.sql.functions import format_number <br/>
+results = std_dev.select(format_number('stddev_samp(Sales)',2).alias('Std')).show() <br/>
++------+ <br/>
+|   Std| <br/>
++------+ <br/>
+|250.09| <br/>
++------+ <br/>
+
+
 
 
  
