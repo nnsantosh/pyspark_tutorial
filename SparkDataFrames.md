@@ -68,5 +68,15 @@ root <br/>
  |-- name: string (nullable = true) <br/>
  
  
+### To derive single column as dataframe use select
 
+df.select('age').show() <br/>
+
++----+ <br/>
+| age| <br/>
++----+ <br/>
+|null| <br/>
+|  30| <br/>
+|  19| <br/>
++----+ <br/>
 
