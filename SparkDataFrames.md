@@ -5,19 +5,19 @@ spark = SparkSession.builder.appName('Basics').getOrCreate() <br/>
 df  = spark.read.json('/FileStore/tables/people.json') <br/>
 df.show() <br/>
 
-+----+-------+
-| age|   name|
-+----+-------+
-|null|Michael|
-|  30|   Andy|
-|  19| Justin|
-+----+-------+
++----+-------+ <br/>
+| age|   name| <br/>
++----+-------+ <br/>
+|null|Michael| <br/>
+|  30|   Andy| <br/>
+|  19| Justin| <br/>
++----+-------+ <br/>
 
 df.printSchema() <br/>
 
-root
- |-- age: long (nullable = true)
- |-- name: string (nullable = true)
+root <br/>
+ |-- age: long (nullable = true) <br/>
+ |-- name: string (nullable = true) <br/>
 
 
 df.columns <br/>
@@ -30,15 +30,15 @@ DataFrame[summary: string, age: string, name: string] <br/>
 
 df.describe().show() <br/>
 
-+-------+------------------+-------+
-|summary|               age|   name|
-+-------+------------------+-------+
-|  count|                 2|      3|
-|   mean|              24.5|   null|
-| stddev|7.7781745930520225|   null|
-|    min|                19|   Andy|
-|    max|                30|Michael|
-+-------+------------------+-------+
++-------+------------------+-------+ <br/>
+|summary|               age|   name| <br/>
++-------+------------------+-------+ <br/>
+|  count|                 2|      3| <br/>
+|   mean|              24.5|   null| <br/>
+| stddev|7.7781745930520225|   null| <br/>
+|    min|                19|   Andy| <br/>
+|    max|                30|Michael| <br/>
++-------+------------------+-------+<br/>
 
 ### If you need to infer schema correctly by specifying your expected data types then 
 
@@ -53,19 +53,19 @@ df = spark.read.json('/FileStore/tables/people.json',schema=final_struc) <br/>
 
 df.show() <br/>
 
-+----+-------+
-| age|   name|
-+----+-------+
-|null|Michael|
-|  30|   Andy|
-|  19| Justin|
-+----+-------+
++----+-------+ <br/>
+| age|   name| <br/>
++----+-------+ <br/>
+|null|Michael| <br/>
+|  30|   Andy| <br/>
+|  19| Justin| <br/>
++----+-------+ <br/>
 
 df.printSchema() <br/>
 
-root
- |-- age: integer (nullable = true)
- |-- name: string (nullable = true)
+root <br/>
+ |-- age: integer (nullable = true) <br/>
+ |-- name: string (nullable = true) <br/>
  
  
 
