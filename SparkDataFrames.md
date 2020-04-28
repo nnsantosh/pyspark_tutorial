@@ -203,5 +203,20 @@ df.groupBy("Company").mean().show() <br/>
 |   MSFT|322.3333333333333| <br/>  
 +-------+-----------------+ <br/>  
 
+There are many aggregate functions available with groupBy <br/>
+
+There is also another aggregate function that we can use directly without groupBy. It takes dictionary as an argument. <br/>
+
+df.agg({'Sales':'max'}).show() <br/>
+
++----------+ <br/>
+|max(Sales)| <br/>
++----------+ <br/>
+|     870.0| <br/>
++----------+ <br/>
+
+
+
+
 
  
