@@ -169,4 +169,39 @@ myDict = row.asDict() <br/>
  'Adj Close': 25.620401} <br/>
  
  
+ ### GroupBy and Aggregate
+ 
+ df  = spark.read.csv('/FileStore/tables/sales_info.csv',inferSchema=True,header=True) <br/>
+ df.show() <br/>
+ +-------+-------+-----+ <br/>
+|Company| Person|Sales| <br/>
++-------+-------+-----+ <br/>
+|   GOOG|    Sam|200.0| <br/>
+|   GOOG|Charlie|120.0| <br/>
+|   GOOG|  Frank|340.0| <br/>
+|   MSFT|   Tina|600.0| <br/>
+|   MSFT|    Amy|124.0| <br/>
+|   MSFT|Vanessa|243.0| <br/>
+|     FB|   Carl|870.0| <br/>
+|     FB|  Sarah|350.0| <br/>
+|   APPL|   John|250.0| <br/>
+|   APPL|  Linda|130.0| <br/>
+|   APPL|   Mike|750.0| <br/>
+|   APPL|  Chris|350.0| <br/>
++-------+-------+-----+ <br/>
+
+We can group by company and calculate mean using below: <br/>
+
+df.groupBy("Company").mean().show() <br/>  
+ 
+ +-------+-----------------+ <br/>  
+|Company|       avg(Sales)| <br/>  
++-------+-----------------+ <br/>  
+|   APPL|            370.0| <br/>  
+|   GOOG|            220.0| <br/>  
+|     FB|            610.0| <br/>  
+|   MSFT|322.3333333333333| <br/>  
++-------+-----------------+ <br/>  
+
+
  
