@@ -136,4 +136,37 @@ df.show() <br/>
 |2010-02-01 00:00:00|192.36999699999998|             196.0|191.29999899999999|        194.729998|187469100|         25.229131| <br/>
 +-------------------+------------------+------------------+------------------+------------------+---------+------------------+ <br/>
 
+df.filter("Close < 500").show() <br/>
+This can be combined with select to select columns required for the output dataframe <br/>
+df.filter("Close < 500").select(['Open','Close']).show() <br/>
 
+This can also be achieved using: <br/>
+df.filter(df['Close'] < 500).select('Volume').show() <br/>
+
+To combine multiple condition use & for and,| for or and ~ for not <br/>
+Also parantheis needs to be used to separate conditions <br/>
+
+df.filter((df['Close'] < 200) & (df['Open'] > 200)).select('Open','Close').show() <br/>
+
+We can use collect for collecting results as list <br/>
+
+results = df.filter(df['Low'] == 197.16).show() <br/>
+
+[Row(Date=datetime.datetime(2010, 1, 22, 0, 0), Open=206.78000600000001, High=207.499996, Low=197.16, Close=197.75, Volume=220441900, Adj Close=25.620401)] <br/>
+
+We can extract the first row from list using <br/>
+row = results[0] <br/>
+
+We can convert this row data to dictionary <br/>
+myDict = row.asDict() <br/>
+
+{'Date': datetime.datetime(2010, 1, 22, 0, 0), <br/>
+ 'Open': 206.78000600000001, <br/>
+ 'High': 207.499996, <br/>
+ 'Low': 197.16, <br/>
+ 'Close': 197.75, <br/>
+ 'Volume': 220441900, <br/>
+ 'Adj Close': 25.620401} <br/>
+ 
+ 
+ 
