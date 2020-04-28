@@ -215,7 +215,26 @@ df.agg({'Sales':'max'}).show() <br/>
 |     870.0| <br/>
 +----------+ <br/>
 
+### Functions
+We can also import functions from Spark <br/>
+These functions can be combined with df.select <br/>
 
+from pyspark.sql.functions import countDistinct,avg,stddev <br/>
+df.select(avg('Sales')).show() <br/>
+
++-----------------+ <br/>
+|       avg(Sales)| <br/>
++-----------------+ <br/>
+|360.5833333333333| <br/>
++-----------------+ <br/>
+
+df.select(countDistinct('Sales')).show() <br/>
+
++---------------------+ <br/>
+|count(DISTINCT Sales)| <br/>
++---------------------+ <br/>
+|                   11| <br/>
++---------------------+ <br/>
 
 
 
