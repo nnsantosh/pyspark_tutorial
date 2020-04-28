@@ -240,7 +240,7 @@ You can also specify alias names for the output column: <br/>
 
 df.select(avg('Sales').alias('Average Sales')).show() <br/>
 
-We can also format number as shown: <br/>
+We can also format number as shown using format_number function and choose how many digits to display after decimal point: <br/>
 std_dev = df.select(stddev('Sales')) <br/>
 Output will be: <br/>
 +------------------+ <br/>
@@ -255,6 +255,23 @@ results = std_dev.select(format_number('stddev_samp(Sales)',2).alias('Std')).sho
 +------+ <br/>
 |250.09| <br/>
 +------+ <br/>
+
+
+### OrderBy
+
+We can sort dataframe by using orderBy as shown <br/>
+df.orderBy("Sales") <br/>
+By default it is ascending order <br/>
+To order by descending: <br/>
+df.orderBy(df['Sales'].desc()) <br/>
+
+### Missing Data
+
+We have 3 options to deal with missing data:
+1. Keep the missing data as null
+2. Drop the missing data points including the entire row
+3. Fill missing data with some default value
+
 
 
 
