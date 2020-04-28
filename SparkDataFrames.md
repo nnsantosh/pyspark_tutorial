@@ -80,3 +80,25 @@ df.select('age').show() <br/>
 |  19| <br/>
 +----+ <br/>
 
+### To grab first two rows of dataframe use head
+
+df.head(2) <br/>
+
+[Row(age=None, name='Michael'), Row(age=30, name='Andy')] <br/>
+
+NOTE: Head does not return dataframe but List of Row objects <br/>
+
+### To append new column to existing dataframe use withColumn
+
+df.withColumn('double_age',df['age']*2) <br/>
+
+df.withColumn('double_age',df['age']*2).show() <br/>
+
++----+-------+----------+ <br/>
+| age|   name|double_age| <br/>
++----+-------+----------+ <br/>
+|null|Michael|      null| <br/>
+|  30|   Andy|        60| <br/>
+|  19| Justin|        38| <br/>
++----+-------+----------+ <br/>
+
