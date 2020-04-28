@@ -102,3 +102,22 @@ df.withColumn('double_age',df['age']*2).show() <br/>
 |  19| Justin|        38| <br/>
 +----+-------+----------+ <br/>
 
+### To register dataframe as table and run sql queries
+
+df.createOrReplaceTempView('people') <br/>
+
+newDf = spark.sql("select * from people") <br/>
+
+newDf.show() <br/>
+
+results = spark.sql("select * from people where age=30") <br/>
+
+results.show() <br/>
+
++---+----+ <br/>
+|age|name| <br/>
++---+----+ <br/>
+| 30|Andy| <br/>
++---+----+ <br/>
+
+
