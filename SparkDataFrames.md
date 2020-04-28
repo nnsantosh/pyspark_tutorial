@@ -125,6 +125,8 @@ results.show() <br/>
 from pyspark.sql import SparkSession <br/>
 spark = SparkSession.builder.appName('Basics').getOrCreate() <br/>
 df  =  spark.read.csv('/FileStore/tables/appl_stock.csv',inferSchema=True,header=True) <br/>
+df.show() <br/>
+
 +-------------------+------------------+------------------+------------------+------------------+---------+------------------+ <br/>
 |               Date|              Open|              High|               Low|             Close|   Volume|         Adj Close| <br/>
 +-------------------+------------------+------------------+------------------+------------------+---------+------------------+ <br/>
