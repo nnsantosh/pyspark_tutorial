@@ -364,7 +364,24 @@ df.na.fill('No Name').show() <br/>
 from pyspark.sql import SparkSession <br/>
 spark = SparkSession.builder.appName('dates').getOrCreate() <br/>
 df  = spark.read.csv('/FileStore/tables/appl_stock.csv',inferSchema=True,header=True) <br/>
+from pyspark.sql.functions import (dayofmonth,hour,dayofyear,month,year,weekofyear,format_number,date_format) <br/>
 
+df.select(dayofmonth(df['Date'])).show() <br/>
 
++----------------+ <br/>
+|dayofmonth(Date)| <br/>
++----------------+ <br/>
+|               4| <br/>
+|               5| <br/>
+|               6| <br/>
+|               7| <br/>
+|               8| <br/>
+|              11| <br/>
+|              12| <br/>
+|              13| <br/>
+|               1| <br/>
++----------------+<br/>
+
+Use the date related functions to extract information from timestamp type column as per the requirement.
 
 
