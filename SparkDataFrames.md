@@ -312,11 +312,12 @@ df.na.drop(thresh=2).show() <br/>
 ### Dropping all rows having missing data using how='any'
 
 There is another parameter how which can be passed. By default it is how='any' meaning if there is any null value in the row drop it. <br/>
-df.na.drop(how='any').show() <br/>
+df.na.drop(how='any') <br/>
 
 ### Dropping rows only if all columns missing data using how='all'
 
 We can also change this to how='all' meaning drop the row only if all values are null or missing. <br/>
+df.na.drop(how='all') <br/>
 
 ### Dropping rows having missing data only for specified columns using subset
 
@@ -330,4 +331,32 @@ df.na.drop(subset=['Sales']).show() <br/>
 |emp4|Cindy|456.0| <br/>
 +----+-----+-----+ <br/>
 
+### Filling default values for missing data without specifying subset columns
+
+df.na.fill('No Name').show() <br/>
+
++----+-------+-----+ <br/>
+|  Id|   Name|Sales| <br/>
++----+-------+-----+ <br/>
+|emp1|   John| null| <br/>
+|emp2|No Name| null| <br/>
+|emp3|No Name|345.0| <br/>
+|emp4|  Cindy|456.0| <br/>
++----+-------+-----+ <br/>
  
+ In the above case spark applies the default value only to column types of String
+ 
+ ### Filling default values for missing data by specifying subset columns
+ 
+ df.na.fill('No Name',subset=['Name']).show() <br/>
+ 
+ +----+-------+-----+ <br/>
+|  Id|   Name|Sales| <br/>
++----+-------+-----+ <br/>
+|emp1|   John| null| <br/>
+|emp2|No Name| null| <br/>
+|emp3|No Name|345.0| <br/>
+|emp4|  Cindy|456.0| <br/>
++----+-------+-----+ <br/>
+
+
