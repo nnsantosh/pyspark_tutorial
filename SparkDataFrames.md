@@ -359,4 +359,12 @@ df.na.fill('No Name').show() <br/>
 |emp4|  Cindy|456.0| <br/>
 +----+-------+-----+ <br/>
 
+## Dates and Timestamps
+
+from pyspark.sql import SparkSession <br/>
+spark = SparkSession.builder.appName('dates').getOrCreate() <br/>
+df  = spark.read.csv('/FileStore/tables/appl_stock.csv',inferSchema=True,header=True) <br/>
+
+
+
 
