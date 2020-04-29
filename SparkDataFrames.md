@@ -267,13 +267,67 @@ df.orderBy(df['Sales'].desc()) <br/>
 
 ### Missing Data
 
-We have 3 options to deal with missing data:
-1. Keep the missing data as null
-2. Drop the missing data points including the entire row
-3. Fill missing data with some default value
+We have 3 options to deal with missing data: <br/>
+1. Keep the missing data as null <br/>
+2. Drop the missing data points including the entire row <br/>
+3. Fill missing data with some default value <br/>
+
+df  = spark.read.csv('/FileStore/tables/ContainsNull.csv',inferSchema=True,header=True) <br/>
+df.show() <br/>
++----+-----+-----+ <br/>
+|  Id| Name|Sales| <br/>
++----+-----+-----+ <br/>
+|emp1| John| null| <br/>
+|emp2| null| null| <br/>
+|emp3| null|345.0| <br/>
+|emp4|Cindy|456.0| <br/>
++----+-----+-----+ <br/>
 
 
+### Dropping all rows having missing data
 
+To drop rows having missing data use <br/>
+df.na.drop().show() <br/>
 
++----+-----+-----+ <br/>
+|  Id| Name|Sales| <br/>
++----+-----+-----+ <br/>
+|emp4|Cindy|456.0| <br/>
++----+-----+-----+ <br/>
+
+### Dropping rows having missing data greater than threshold number of values
+
+We can also specify the threshold while dropping. So if row has atleast threshold number of non null values then that row will not be dropped. <br/>
+Example: <br/>
+df.na.drop(thresh=2).show() <br/>
+
++----+-----+-----+ <br/>
+|  Id| Name|Sales| <br/>
++----+-----+-----+ <br/>
+|emp1| John| null| <br/>
+|emp3| null|345.0| <br/>
+|emp4|Cindy|456.0| <br/>
++----+-----+-----+ <br/>
+
+### Dropping all rows having missing data using how='any'
+
+There is another parameter how which can be passed. By default it is how='any' meaning if there is any null value in the row drop it. <br/>
+df.na.drop(how='any').show() <br/>
+
+### Dropping rows only if all columns missing data using how='all'
+
+We can also change this to how='all' meaning drop the row only if all values are null or missing. <br/>
+
+### Dropping rows having missing data only for specified columns using subset
+
+We can also specify condition like only for certain column if the data is missing then drop the rows for other columns it does not matter. This can be done using subset: <br/>
+df.na.drop(subset=['Sales']).show() <br/>
+
++----+-----+-----+ <br/>
+|  Id| Name|Sales| <br/>
++----+-----+-----+ <br/>
+|emp3| null|345.0| <br/>
+|emp4|Cindy|456.0| <br/>
++----+-----+-----+ <br/>
 
  
